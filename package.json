@@ -1,0 +1,81 @@
+{
+  "name": "micromitter",
+  "version": "1.0.0",
+  "description": "minimal tiny and performant event emitter / dispatcher",
+  "jsnext:main": "dist/micromitter.es.js",
+  "module": "dist/micromitter.es.js",
+  "main": "dist/micromitter.js",
+  "umd:main": "dist/micromitter.umd.js",
+  "scripts": {
+    "bump": "standard-version",
+    "lint": "eslint src test",
+    "fix": "eslint --fix src",
+    "rollup": "rollup -c",
+    "clear": "rimraf dist",
+    "serve": "serve --cors --cache 100 --open --clipless",
+    "livereload": "livereload example",
+    "build": "cross-env NODE_ENV=production yarn run clear && yarn run rollup && yarn run minify:cjs && yarn run minify:umd && yarn run size",
+    "dev": "run-p watch livereload serve",
+    "watch": "rollup -c --watch",
+    "minify:cjs": "uglifyjs $npm_package_main -cm toplevel -o $npm_package_main -p relative --in-source-map ${npm_package_main}.map --source-map ${npm_package_main}.map",
+    "minify:umd": "uglifyjs dist/micromitter.umd.js -cm -o dist/micromitter.umd.js -p relative --in-source-map dist/micromitter.umd.js.map --source-map dist/micromitter.umd.js.map",
+    "docs": "documentation readme src/index.js --section API -q",
+    "size": "echo \"Gzipped Size: $(strip-json-comments --no-whitespace dist/micromitter.es.js | gzip-size)\"",
+    "release": "yarn run build -s && yarn run bump && git push --follow-tags origin master && npm publish",
+    "pretest": "yarn build",
+    "test": "ava -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soenkekluth/micromitter.git"
+  },
+  "keywords": [
+    "kb",
+    "lightweight",
+    "light",
+    "tiny",
+    "small",
+    "mini",
+    "minimal",
+    "micro",
+    "event",
+    "events",
+    "dispatch",
+    "emit",
+    "emitter",
+    "dispatcher",
+    "eventdispatcher"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "Sönke Kluth <soenke.kluth@gmail.com> (http://soenkekluth.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/soenkekluth/micromitter/issues"
+  },
+  "homepage": "https://github.com/soenkekluth/micromitter#readme",
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "cross-env": "^5.0.5",
+    "eslint": "^4.4.1",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
+    "gzip-size-cli": "^2.0.0",
+    "lerna": "^2.0.0",
+    "livereload": "^0.6.2",
+    "npm-run-all": "^4.0.2",
+    "rimraf": "^2.6.1",
+    "rollup": "^0.47.6",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-commonjs": "^8.1.0",
+    "rollup-plugin-eslint": "^4.0.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-watch": "^4.3.1",
+    "serve": "^6.0.6",
+    "standard-version": "^4.2.0",
+    "strip-json-comments-cli": "^1.0.1",
+    "uglify-js": "^3.0.27"
+  }
+}
