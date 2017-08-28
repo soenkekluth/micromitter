@@ -2,3 +2,4 @@
 /dist
 *.map
 yarn-error.log
+.vscode
