@@ -1,4 +1,6 @@
 # micromitter
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/soenkekluth/micromitter.svg)](https://greenkeeper.io/)
 minimal and performant event emitter / emitter with custom events and payload
 
 
