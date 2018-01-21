@@ -82,10 +82,14 @@
   },
   "ava": {
     "babel": {
-			"babelrc": true,
-			"plugins": ["transform-decorators-legacy"],
-			"presets": ["@ava/stage-4"]
-		}
+      "babelrc": true,
+      "plugins": [
+        "transform-decorators-legacy"
+      ],
+      "presets": [
+        "@ava/stage-4"
+      ]
+    }
   },
-  "version": "1.0.2"
+  "version": "1.0.3"
 }
