@@ -1,24 +1,22 @@
-import Emitter from './emitter';
+import MicroMitter from './micromitter';
 
-export default (target) => {
-    const micro = new Emitter(target);
-    micro.on = micro.on.bind(micro);
-    micro.off = micro.off.bind(micro);
-    micro.emit = micro.emit.bind(micro);
+const decorator = (target) => {
+  const micro = new MicroMitter(target);
+  micro.on = micro.on.bind(micro);
+  micro.off = micro.off.bind(micro);
+  micro.emit = micro.emit.bind(micro);
 
-    const t = target.prototype ? target.prototype : target;
+  const t = target.prototype ? target.prototype : target;
 
-    if (!t.emit) {
-        t.emit = micro.emit;
-    }
-    if (!t.on) {
-        t.on = micro.on;
-    }
-    if (!t.off) {
-        t.off = micro.off;
-    }
-
-    if (!target.prototype) {
-        t.__microEmit = micro;
-    }
+  if (typeof t.emit === 'undefined') {
+    t.emit = micro.emit;
+  }
+  if (typeof t.on === 'undefined') {
+    t.on = micro.on;
+  }
+  if (typeof t.off === 'undefined') {
+    t.off = micro.off;
+  }
 };
+
+export default decorator;

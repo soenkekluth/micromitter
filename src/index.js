@@ -1,5 +1,6 @@
-import Emitter from './emitter';
-export { default as micromitter } from './decorator';
-export { Emitter as MicroMitter };
-export default Emitter;
-export const emitter = new Emitter();
+import MicroMitter from './micromitter';
+
+export { default as decorator } from './decorator';
+export { default as emitter } from './global';
+export default MicroMitter;
+
