@@ -70,7 +70,7 @@
     "build:lib": "babel src -d lib && rollup -c",
     "bump": "standard-version",
     "docs": "documentation readme src/micromitter.js --section API -q",
-    "lint:fix": "eslint --fix src",
+    "lint:fix": "eslint src --fix",
     "lint": "eslint src test",
     "minify": "uglifyjs lib/micromitter.umd.js -cm --source-map -o lib/micromitter.min.js",
     "prerelease": "run-s bump build && git push --follow-tags origin master",

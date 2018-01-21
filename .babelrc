@@ -8,8 +8,5 @@
         "useBuiltIns": "entry"
       }
     ]
-  ],
-  "plugins": [
-    "transform-decorators-legacy"
   ]
 }
